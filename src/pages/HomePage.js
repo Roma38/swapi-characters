@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Dimmer, Loader, Message, List, Pagination } from "semantic-ui-react";
 
 import CharactersListItem from "../components/CharactersListItem";
-
+import CharactersSearch from "../components/CharactersSearch";
 import { getHeroes } from "../redux/actions/heroes";
-
 
 function HomePage() {
   const heroes = useSelector(state => state.heroes);
@@ -26,6 +25,7 @@ function HomePage() {
         <p>{heroes.error}</p>
       </Message>}
     {heroes.loadingState === "succeed" && <>
+      <CharactersSearch />
       <List>
         {heroes.items.results.map(hero => <CharactersListItem hero={hero} key={hero.name} />)}
       </List>
