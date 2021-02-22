@@ -10,6 +10,7 @@ function HomePage() {
   const heroes = useSelector(state => state.heroes);
   const [activePage, setActivePage] = useState(1);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getHeroes(activePage));
   }, [activePage, dispatch]);

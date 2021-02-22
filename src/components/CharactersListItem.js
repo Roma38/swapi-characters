@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { List } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 
 function CharactersListItem({ hero }) {
@@ -13,7 +14,7 @@ function CharactersListItem({ hero }) {
   }, [hero.homeworld]);
 
   return <List.Item>
-    <List.Header>{hero.name}</List.Header>
+    <List.Header as={Link} to={`/profile/${hero.url.split("/")[5]}`}>{hero.name}</List.Header>
       Gender: {hero.gender} <br />
       {homeworld && 'HomePlanet: '+ homeworld}
   </List.Item>

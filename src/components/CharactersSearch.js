@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useReducer, useRef, useCallback } from 'react'
-import { Search } from 'semantic-ui-react'
+import { useEffect, useReducer, useRef, useCallback } from "react";
+import { Search } from "semantic-ui-react";
 
+import { history } from "../history";
 import { API_HOST } from "../constants";
 
 const initialState = {
@@ -19,7 +20,7 @@ function searchReducer(state, action) {
     case 'FINISH_SEARCH':
       return { ...state, loading: false, results: action.results }
     case 'UPDATE_SELECTION':
-      return { ...state, value: action.selection }
+      return history.push(`/profile/${action.url.split("/")[5]}`)
 
     default:
       throw new Error()
@@ -56,10 +57,10 @@ function CharactersSearch() {
   return <Search
     loading={loading}
     onResultSelect={(e, data) =>
-      dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
+      dispatch({ type: 'UPDATE_SELECTION', url: data.result.url })
     }
     onSearchChange={handleSearchChange}
-    results={results.map(({ name }) => ({ title: name }))}
+    results={results.map(({ name, url }) => ({ title: name, url }))}
     value={value}
   />
 }
