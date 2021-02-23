@@ -5,16 +5,7 @@ import { Header, Dimmer, Loader, List, Button, Icon } from "semantic-ui-react";
 
 import { API_HOST } from "../constants";
 import { history } from "../history";
-
-function fetchData(url) {
-  return axios
-    .get(url)
-    .then(({ data }) => data)
-    .catch(error => {
-      console.log(error);
-      history.push("/");
-    });
-}
+import { fetchData } from "../utils";
 
 function ProfilePage() {
   const { id } = useParams();

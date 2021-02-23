@@ -16,3 +16,8 @@
 /* .ui.list>.item:hover>i.icon.like-icon {
   display: table-cell;
 } */
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}

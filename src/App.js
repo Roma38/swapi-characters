@@ -5,6 +5,7 @@ import { Container } from "semantic-ui-react";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage"
+import FavoritePage from "./pages/FavoritePage"
 
 import './App.css';
 
@@ -23,9 +24,12 @@ function App() {
       <Route path="/profile/:id" >
         <ProfilePage />
       </Route>
-      <Route path="/login" exact>
+      <Route path="/login">
         <LoginPage />
       </Route>
+      <Route path="/favorite">
+        <FavoritePage />
+      </Route>      
     </Switch>
   </Container>
 }
