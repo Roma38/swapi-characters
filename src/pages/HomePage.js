@@ -27,7 +27,7 @@ function HomePage() {
       </Message>}
     {heroes.loadingState === "succeed" && <>
       <CharactersSearch />
-      <List>
+      <List divided>
         {heroes.items.results.map(hero => <CharactersListItem hero={hero} key={hero.name} />)}
       </List>
       <Pagination

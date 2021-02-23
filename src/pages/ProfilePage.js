@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { Header, Dimmer, Loader, List } from "semantic-ui-react";
+import { Header, Dimmer, Loader, List, Button, Icon } from "semantic-ui-react";
 
 import { API_HOST } from "../constants";
 
@@ -43,19 +43,23 @@ function ProfilePage() {
     <p>Eye Color: <i>{hero.eye_color}</i></p>
     <p>Year of Birth: <i>{hero.birth_year}</i></p>
     <p>HomePlanet: <i>{homeworld}</i></p>
-    <p>Vehicles (name, model):
-      <List>
-        {vehicles.map(({ name, model }) => <List.Item>
-          <List.Header>{model}</List.Header>
-          {name}
-        </List.Item>)}
-      </List>
-    </p>
-    <p>Films:
-      <List bulleted>
-        {films.map(({ title }) => <List.Item>{title}</List.Item>)}
-      </List>
-    </p>
+    <p>Vehicles (name, model):</p>
+    <List>
+      {vehicles.map(({ name, model, url }) => <List.Item key={url}>
+        <List.Header>{model}</List.Header>
+        {name}
+      </List.Item>)}
+    </List>
+    <p>Films:</p>
+    <List bulleted>
+      {films.map(({ title, url }) => <List.Item key={url}>{title}</List.Item>)}
+    </List>
+    <Button as={Link} to="/" animated>
+      <Button.Content visible>Back</Button.Content>
+      <Button.Content hidden>
+        <Icon name='arrow left' />
+      </Button.Content>
+    </Button>
   </> :
     <Dimmer active>
       <Loader>Loading</Loader>
