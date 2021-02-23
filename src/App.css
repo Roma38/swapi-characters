@@ -6,3 +6,13 @@
   margin: 20px auto; 
   text-align: center;
 }
+
+.ui.list>.item>i.icon.like-icon {
+  float: right;
+  cursor: pointer;
+  /* display: none; */
+}
+
+/* .ui.list>.item:hover>i.icon.like-icon {
+  display: table-cell;
+} */

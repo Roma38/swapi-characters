@@ -4,9 +4,7 @@ import { API_HOST } from "../../constants";
 export const HEROES_LOADING = "HEROES_LOADING";
 export const HEROES_LOAD_SUCCEED = "HEROES_LOAD_SUCCEED";
 export const HEROES_LOAD_FAILED = "HEROES_LOAD_FAILED";
-export const ADD_HERO = "ADD_HERO";
-export const EDIT_HERO = "EDIT_HERO";
-export const DELETE_HERO = "DELETE_HERO";
+export const TOGGLE_FAVORITE = "TOGGLE_FAVORITE";
 
 export const heroesLoadStart = () => ({ type: HEROES_LOADING });
 
@@ -27,3 +25,9 @@ export const getHeroes = (page = 1, search) => dispatch => {
     .then(({ data }) => dispatch(heroesLoadSucceed(data)))
     .catch(error => dispatch(heroesLoadFailed(error)));
 };
+
+export const toggleFavorite = url => ({
+  type: TOGGLE_FAVORITE,
+  payload: url
+});
+
