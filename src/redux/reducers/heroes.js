@@ -27,10 +27,10 @@ export const heroesReducer = (state = initialState, { type, payload }) => {
       };
     case TOGGLE_FAVORITE:
       const index = state.favorite.indexOf(payload);
-      const favorite = index === -1 ?
-        [...state.favorite, payload] :
-        state.favorite.splice(index, 1);
-
+      const favorite = [...state.favorite];
+      index === -1 ?
+        favorite.push(payload) :
+        favorite.splice(index, 1);
       localStorage.setItem('favorite', JSON.stringify(favorite));
       return { ...state, favorite };
 
