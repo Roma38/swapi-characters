@@ -18,7 +18,7 @@ function HomePage() {
     dispatch(getHeroes(activePage));
   }, [activePage, dispatch]);
 
-  return <div>
+  return <>
     {heroes.loadingState === "loading" &&
       <Dimmer active>
         <Loader>Loading</Loader>
@@ -38,23 +38,25 @@ function HomePage() {
           <Label basic pointing='left'>
             {heroes.favorite.length}
           </Label>
-        </Button>        
+        </Button>
       </nav>
       <List divided>
         {heroes.items.results.map(hero => <CharactersListItem hero={hero} key={hero.name} />)}
       </List>
-      <Pagination
-        activePage={activePage}
-        onPageChange={(e, { activePage }) => setActivePage(activePage)}
-        size='mini'
-        // boundaryRange={0}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={1}
-        totalPages={Math.ceil(heroes.items.count / ITEMS_PER_PAGE)}
-      />
+      <div className="pagination-wrapper">
+        <Pagination
+          activePage={activePage}
+          onPageChange={(e, { activePage }) => setActivePage(activePage)}
+          size='mini'
+          // boundaryRange={0}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={1}
+          totalPages={Math.ceil(heroes.items.count / ITEMS_PER_PAGE)}
+        />
+      </div>
     </>}
-  </div>
+  </>
 }
 
 export default HomePage;

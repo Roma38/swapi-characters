@@ -1,5 +1,10 @@
 .application {
   padding-top: 30px;
+  max-width: 600px;
+}
+
+.ui.container.application {
+  max-width: 600px !important;
 }
 
 .pagination-wrapper {

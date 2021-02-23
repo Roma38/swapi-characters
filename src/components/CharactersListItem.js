@@ -28,7 +28,7 @@ function CharactersListItem({ hero }) {
     <List.Content>
       <List.Header as={Link} to={`/profile/${hero.url.split("/")[5]}`}>{hero.name}</List.Header> {/* Может можно лучше? */}
       Gender: {hero.gender} <br />
-      {homeworld && 'HomePlanet: ' + homeworld}
+      HomePlanet: {homeworld}
     </List.Content>
   </List.Item>
 }
