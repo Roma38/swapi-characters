@@ -15,7 +15,7 @@ function FavoritePage() {
   useEffect(() => {
     Promise.all(favorite.map(url => fetchData(url)))
       .then(data => setHeroes(data));
-  }, [favorite]);
+  }, []);
 
   return heroes ?
     <>
@@ -23,7 +23,7 @@ function FavoritePage() {
         <Button as={Link} to="/" animated>
           <Button.Content visible>Back</Button.Content>
           <Button.Content hidden>
-            <Icon name='arrow left' />
+            <Icon name="arrow left" />
           </Button.Content>
         </Button>
       </nav>
@@ -35,8 +35,7 @@ function FavoritePage() {
         <Pagination
           activePage={activePage}
           onPageChange={(e, { activePage }) => setActivePage(activePage)}
-          size='mini'
-          // boundaryRange={0}
+          size="mini"
           firstItem={null}
           lastItem={null}
           siblingRange={1}

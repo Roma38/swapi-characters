@@ -31,11 +31,11 @@ function HomePage() {
     {heroes.loadingState === "succeed" && <>
       <nav className="navigation">
         <CharactersSearch />
-        <Button as={Link} to="/favorite" labelPosition='right'>
+        <Button as={Link} to="/favorite" labelPosition="right">
           <Button icon>
-            <Icon name='heart' /> Liked
+            <Icon name="heart" /> Liked
           </Button>
-          <Label basic pointing='left'>
+          <Label basic pointing="left">
             {heroes.favorite.length}
           </Label>
         </Button>
@@ -47,8 +47,7 @@ function HomePage() {
         <Pagination
           activePage={activePage}
           onPageChange={(e, { activePage }) => setActivePage(activePage)}
-          size='mini'
-          // boundaryRange={0}
+          size="mini"
           firstItem={null}
           lastItem={null}
           siblingRange={1}

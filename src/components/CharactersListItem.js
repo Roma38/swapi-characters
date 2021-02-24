@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { List } from "semantic-ui-react";
 
-import { toggleFavorite } from '../redux/actions/heroes';
+import { toggleFavorite } from "../redux/actions/heroes";
 
 function CharactersListItem({ hero }) {
   const [homeworld, setHomeworld] = useState(null);
@@ -22,11 +22,11 @@ function CharactersListItem({ hero }) {
     <List.Icon className="like-icon" 
       onClick={() => dispatch(toggleFavorite(hero.url))}
       name={favorite.includes(hero.url) ? 'heart' : 'heart outline'}
-      size='large' 
+      size="large" 
     />
 
     <List.Content>
-      <List.Header as={Link} to={`/profile/${hero.url.split("/")[5]}`}>{hero.name}</List.Header> {/* Может можно лучше? */}
+      <List.Header as={Link} to={`/profile/${hero.url.split("/")[5]}`}>{hero.name}</List.Header>
       Gender: {hero.gender} <br />
       HomePlanet: {homeworld}
     </List.Content>

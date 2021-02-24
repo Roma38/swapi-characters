@@ -6,7 +6,7 @@ import {
 } from "../actions/heroes.js";
 
 const initialState = {
-  loadingState: "",
+  loadingState: '',
   error: null,
   items: [],
   favorite: JSON.parse(localStorage.getItem('favorite')) || []
@@ -15,13 +15,13 @@ const initialState = {
 export const heroesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case HEROES_LOADING:
-      return { ...state, loadingState: "loading" };
+      return { ...state, loadingState: 'loading' };
     case HEROES_LOAD_SUCCEED:
-      return { ...state, loadingState: "succeed", items: payload };
+      return { ...state, loadingState: 'succeed', items: payload };
     case HEROES_LOAD_FAILED:
       return {
         ...state,
-        loadingState: "failed",
+        loadingState: 'failed',
         error: payload,
         items: []
       };

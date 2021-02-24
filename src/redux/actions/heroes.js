@@ -18,10 +18,10 @@ export const heroesLoadFailed = error => ({
   payload: error
 });
 
-export const getHeroes = (page = 1, search) => dispatch => {
+export const getHeroes = (page = 1) => dispatch => {
   dispatch(heroesLoadStart());
   axios
-    .get(`${API_HOST}/people/?${search ? 'search=' + search + '&' : ''}page=${page}`)
+    .get(`${API_HOST}/people/?page=${page}`)
     .then(({ data }) => dispatch(heroesLoadSucceed(data)))
     .catch(error => dispatch(heroesLoadFailed(error)));
 };

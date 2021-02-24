@@ -12,17 +12,27 @@
   text-align: center;
 }
 
-.ui.list>.item>i.icon.like-icon {
+.ui.list>.item>i.icon.like-icon, .like-icon {
   float: right;
   cursor: pointer;
-  /* display: none; */
 }
-
-/* .ui.list>.item:hover>i.icon.like-icon {
-  display: table-cell;
-} */
 
 .navigation {
   display: flex;
   justify-content: space-between;
+}
+
+.login-btn {
+  cursor: pointer;
+}
+
+.app-header {
+  background-color: black;
+  padding: 20px;
+}
+
+.user-label.ui.image {
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }

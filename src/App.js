@@ -6,32 +6,34 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage"
 import FavoritePage from "./pages/FavoritePage"
+import HeaderComponent from "./components/HeaderComponent";
 
-import './App.css';
+import "./App.css";
 
 
 function App() {
   const { isLoggedIn } = useSelector(state => state.user);
 
-  return <Container className="application">
-    {isLoggedIn ?
-      <Redirect to="/" /> :
-      <Redirect to="/login" />}
-    <Switch>
-      <Route path="/" exact>
-        <HomePage />
-      </Route>
-      <Route path="/profile/:id" >
-        <ProfilePage />
-      </Route>
-      <Route path="/login">
-        <LoginPage />
-      </Route>
-      <Route path="/favorite">
-        <FavoritePage />
-      </Route>      
-    </Switch>
-  </Container>
+  return <>
+    <HeaderComponent />
+    <Container className="application">
+      {!isLoggedIn && <Redirect to="/login" />}
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        <Route path="/profile/:id" >
+          <ProfilePage />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/favorite">
+          <FavoritePage />
+        </Route>
+      </Switch>
+    </Container>
+  </>
 }
 
 export default App;
