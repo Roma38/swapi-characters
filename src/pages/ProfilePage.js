@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Header, Dimmer, Loader, List, Button, Icon } from "semantic-ui-react";
 
 import { API_HOST } from "../constants";
 import { history } from "../history";
 import { fetchData } from "../utils";
+import { toggleFavorite } from "../redux/actions/heroes";
 
 function ProfilePage() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const { favorite } = useSelector(state => state.heroes);
   const [hero, setHero] = useState(null);
   const [homeworld, setHomeworld] = useState(null);
   const [vehicles, setVehicles] = useState([]);
@@ -28,14 +32,21 @@ function ProfilePage() {
       })
       .catch(error => {
         console.log(error);
-        alert("Oops, something went wrong :(");
+        alert('Oops, something went wrong :(');
         history.push("/");
       });
   }, [id]);
 
   return hero ?
     <>
-      <Header as='h1'>{hero.name}</Header>
+      <Header as="h2">
+        <Header.Content>{hero.name}</Header.Content>
+        <Icon className="like-icon" 
+          floated="right"
+          onClick={() => dispatch(toggleFavorite(hero.url))}
+          name={favorite.includes(hero.url) ? 'heart' : 'heart outline'}
+        />
+      </Header>
       <p>Height: <i>{hero.height}</i></p>
       <p>Mass: <i>{hero.mass}</i></p>
       <p>Hair Color: <i>{hero.hair_color}</i></p>
@@ -57,7 +68,7 @@ function ProfilePage() {
       <Button as={Link} to="/" animated>
         <Button.Content visible>Back</Button.Content>
         <Button.Content hidden>
-          <Icon name='arrow left' />
+          <Icon name="arrow left" />
         </Button.Content>
       </Button>
     </> :
